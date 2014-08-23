@@ -35,9 +35,11 @@ angular.module('hoGApp')
     var getAlbum = function(){
       console.log('getting Album');
             FB.api(
-                "/475351895119/photos",
+                "/10152643970325120/photos",
                 function (photos) {
-                 //addFolk(photos["data"][0]);
+                  console.log('size:', photos["data"].length)
+                 //addFolk(photos["data"][photos["data"].length-1]);
+                 console.log('Photo: ' , photos["data"][1]);
                 }
             );
     };

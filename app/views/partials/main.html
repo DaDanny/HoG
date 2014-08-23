@@ -8,10 +8,11 @@
 		
 		<carousel interval="myInterval">
 			<slide ng-repeat="slide in slides" active="slide.active">
-				<img width='600px' ng-src="{{slide.image}}" style="margin:auto;">
+				<img width='600px' ng-src="{{slide.picURL}}" style="margin:auto;">
         <div class="carousel-caption">
-          <h4>Slide {{$index}}</h4>
-          <p>{{slide.text}}</p>
+          <h2>{{slide.folkName}}</h2>
+          <p>{{slide.quote}}</p>
+          <h4 ng-repeat = "tag in slide.hashTags">{{tag}}</h4>
         </div>
 			</slide>
 		</carousel>
