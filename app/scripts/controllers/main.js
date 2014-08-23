@@ -60,6 +60,18 @@ angular.module('hoGApp')
     var addFolk = function(folkObject){
       console.log(folkObject);
       var url = folkObject.source;
+      console.log('source', url);
+      console.log('before split:', folkObject.name);
+      var description = folkObject.name.replace(/\n/g," ").split("  ");
+      var name = description[0];
+
+      console.log('description1: ',description[1]);
+      var quote = description[1].replace(/\n/g," ").split(" ");;
+      var tags = quote[1];
+      console.log('description:', description);
+      console.log('name:', name);
+      console.log('quote:', quote);
+      console.log('tags:', tags);
     }
 
 
