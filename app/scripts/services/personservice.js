@@ -3,14 +3,15 @@
 angular.module('hoGApp')
   .service('Personservice', function($http,$q) {
     return{
-      newFolk : function(picURL,folkName,quote,hashTags){
+      newFolk : function(picURL,folkName,quote,hashTags,icon){
         var method = 'POST';
         var insertURL = '/api/folk';
         var formData = {
           'picURL' : picURL,
           'folkName' : folkName,
           'quote' : quote,
-          'hashTags' : hashTags
+          'hashTags' : hashTags,
+          'icon' : icon
         };
 
         var jdata = JSON.stringify(formData);
@@ -24,6 +25,7 @@ angular.module('hoGApp')
           folkName = response.data.folkName;
           quote = response.data.quote;
           hashTags = response.data.hashTags;
+          icon = response.data.icon;
 
           return{
             picURL : function(){
@@ -37,6 +39,9 @@ angular.module('hoGApp')
             },
             hashTags : function(){
               return hashTags;
+            },
+            icon : function(){
+              return icon;
             }
           };
         });

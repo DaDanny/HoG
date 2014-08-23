@@ -37,9 +37,7 @@ angular.module('hoGApp')
             FB.api(
                 "/475351895119/photos",
                 function (photos) {
-                 console.log('photos:', photos["data"][0].name);
                  addFolk(photos["data"][0]);
-
                 }
             );
     };
@@ -52,26 +50,23 @@ angular.module('hoGApp')
        fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
 
-
-
 /***********************
 **** Add Folk to DB ****
 ***********************/
     var addFolk = function(folkObject){
       console.log(folkObject);
       var url = folkObject.source;
-      console.log('source', url);
-      console.log('before split:', folkObject.name);
-      var description = folkObject.name.replace(/\n/g," ").split("  ");
-      var name = description[0];
+      var icon = folkObject.images[1].source;
+      var description = folkObject.name.replace(/\n/g,"  ");
+      var things = description.split('  ');
+      var name = things[0];
+      var quote = things[1];
+      var tags = things[2];
 
-      console.log('description1: ',description[1]);
-      var quote = description[1].replace(/\n/g," ").split(" ");;
-      var tags = quote[1];
-      console.log('description:', description);
       console.log('name:', name);
       console.log('quote:', quote);
       console.log('tags:', tags);
+      Personservice.newFolk(url,name,quote,tags,icon);
     }
 
 
