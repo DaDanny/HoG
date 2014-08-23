@@ -1,0 +1,32 @@
+carousel
+{
+	
+}
+
+.carousel-control
+{
+	background:none !important;
+	cursor:pointer;
+}
+
+.carousel-control > span
+{
+	width:40px !important;
+	height:70px !important;
+	background-repeat:none !important;
+}
+
+.carousel-control > span:before
+{
+	content:'' !important;
+}
+
+.carousel-control.right > span
+{
+	background-image:url('../images/icons/next.png');
+}
+.carousel-control.left > span
+{
+	background-image:url('../images/icons/previous.png');
+}
+	
