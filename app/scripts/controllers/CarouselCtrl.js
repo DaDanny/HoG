@@ -34,4 +34,12 @@ function CarouselCtrl($scope,Personservice) {
 
   $scope.addImagesToCarousel();
 
+  var folkPromise = function(){
+      Personservice.getFolks()
+        .then(function(data){
+          console.log('data: ', data);
+        })
+  }
+  folkPromise();
+
 }

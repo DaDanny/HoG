@@ -37,7 +37,7 @@ angular.module('hoGApp')
             FB.api(
                 "/475351895119/photos",
                 function (photos) {
-                 addFolk(photos["data"][0]);
+                 //addFolk(photos["data"][0]);
                 }
             );
     };
@@ -68,6 +68,5 @@ angular.module('hoGApp')
       console.log('tags:', tags);
       Personservice.newFolk(url,name,quote,tags,icon);
     }
-
 
   });
