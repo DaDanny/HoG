@@ -6,6 +6,8 @@ function CarouselCtrl($scope) {
   var imageArray = [];
 
 	// replace this with FB integration
+	// REMOVE THIS CODE ONCE INTEGRATION IS DONE
+	// SHOULD BE PULLING FROM DB
 	var obj_1 = {
 		image: 'images/feature_person.jpg',
 		text: '"Gastown is awesome"'
