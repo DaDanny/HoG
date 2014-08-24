@@ -4,7 +4,7 @@
 	
 	<h1 class="feature-title">Feature of the Week</h1>
 	
-	<div class="featured-content" ng-controller="CarouselCtrl">
+	<div class="featured-content">
 		
 		<carousel id="carousel" interval="myInterval">
 			<slide ng-repeat="slide in slides" active="slide.active">
@@ -18,38 +18,16 @@
 			
 			<script id="template/carousel/carousel.html" type="text/ng-template">
 					<div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">
-						<ol class="carousel-indicators" ng-show="slides.length > 1">
-							<li ng-repeat="slide in slides track by $index" ng-class="{active: isActive(slide)}" ng-click="select(slide)"></li>
+						<ol class="timeline" ng-show="slides.length > 1">
+							<li ng-repeat="slide in slides track by $index" ng-class="{active: isActive($parent.$parent.$parent.slides[$index])}" ng-click="select(slide)" data-thing="{{$parent.$parent.slides[$index].active}}">
+								<img width='100px' ng-src="{{$parent.$parent.sanitizeUrl($parent.$parent.$parent.slides[$index].picURL)}}" style="margin:auto;">
+							</li>
 						</ol>
 						<div class="carousel-inner" ng-transclude></div>
-							<a class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1"><span class=""></span></a>
-							<a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span class=""></span></a>
+							<a class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1"><span></span></a>
+							<a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span></span></a>
 				    </div>
 			</script>
 		</carousel>
 	</div>
-
-  <p>
-    yo: 
-    {{testDude}}
-  </p>
-
-
 </div>
-
-<script type="text/javascript"> 
-	var global_carousel;
-
-	$(document).ready(function(){
-		global_carousel = $('#carousel').carousel();
-		
-		$('#timeline').on('click', 'li', function(e){
-			var index = $(this).index();
-			debugger
-			global_carousel.next();
-		});
-	});
-
-
-	
-</script>
