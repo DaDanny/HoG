@@ -30,6 +30,7 @@ header img
 	overflow:auto;
 	width:100%;
 	max-width:100vw;
+	height:100vh;
 	background-color:black;
 	background-image:url('../images/background.png');
 	background-repeat:none;
