@@ -79,6 +79,7 @@ angular.module('hoGApp')
 ***********************/
 //Recieves JSON Object and parses that for DB info//
     var addFolk = function(folkObject){
+      console.log('folkObject:', folkObject);
       var url = folkObject.source;
       var icon = folkObject.images[1].source;
       var description = folkObject.name.replace(/\n/g,"  ");
@@ -139,8 +140,6 @@ angular.module('hoGApp')
         }
         if($scope.hashTags.length > 0){
           for(var hash in $scope.hashTags){
-            console.log("$scope.hashTags[hash]", $scope.hashTags[hash]);
-            console.log('tagTrimmed', tagTrimmed);
             if($scope.hashTags[hash] == tagTrimmed){
               found = true;
             }

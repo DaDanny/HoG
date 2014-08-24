@@ -8,7 +8,7 @@
 		
 		<carousel interval="myInterval">
 			<slide ng-repeat="slide in slides" active="slide.active" >
-				<img width='600px' ng-src="{{slide.picURL}}" style="margin:auto;">
+				<img width='600px' height = '400px' ng-src="{{slide.picURL}}" style="margin:auto;">
         <div class="carousel-caption">
           <h2>{{slide.folkName}}</h2>
           <p>{{slide.quote}}</p>
@@ -16,9 +16,12 @@
         </div>
 			</slide>
 		</carousel>
-		
-		<div ng-repeat="tag in hashTags">
-      <a>{{tag}}</h3>
+		<br>
+    <br>
+		<div id="tag_container" style= "text-align:center;">
+      <div class="btn-group" ng-repeat = "tag in hashTags">
+        <label  class="btn btn-primary" btn-checkbox ng-model="checkModel.tag">{{tag}}</label>
+      </div>
     </div>
 	
 	</div>
