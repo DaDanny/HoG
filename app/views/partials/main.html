@@ -5,7 +5,7 @@
 	<h1 class="feature-title">Feature of the Week</h1>
 	
 	<div class="featured-content">
-		
+	
 		<carousel id="carousel" interval="myInterval">
 			<slide ng-repeat="slide in slides" active="slide.active">
 				<img width='550px' ng-src="{{slide.picURL}}" style="margin:auto;">
@@ -29,5 +29,12 @@
 				    </div>
 			</script>
 		</carousel>
+		<br>
+    <br>
+		<div id="tag_container" style= "text-align:center;">
+      <div class="btn-group" ng-repeat = "tag in hashTags">
+        <label  class="btn btn-primary" btn-checkbox ng-model="checkModel.tag">{{tag}}</label>
+      </div>
+    </div>
 	</div>
 </div>
