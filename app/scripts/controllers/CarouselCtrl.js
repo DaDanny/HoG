@@ -10,12 +10,14 @@ function CarouselCtrl($scope,Personservice) {
   // SHOULD BE PULLING FROM DB
   var obj_1 = {
     image: 'images/feature_person.jpg',
-    text: '"Gastown is awesome"'
+    text: '"Gastown is awesome"',
+	name:'Sheri Lee'
   };
   
   var obj_2 = {
     image: 'images/gastown0.jpg',
-    text: '"Gastown 2 is awesome"'
+    text: '"Gastown 2 is awesome"',
+	name:'John Doe'
   };
   
   imageArray.push(obj_1);

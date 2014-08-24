@@ -6,31 +6,49 @@
 	
 	<div class="featured-content" ng-controller="CarouselCtrl">
 		
-		<carousel interval="myInterval">
+		<carousel id="carousel" interval="myInterval">
 			<slide ng-repeat="slide in slides" active="slide.active">
-				<img width='600px' ng-src="{{slide.image}}" style="margin:auto;">
-        <div class="carousel-caption">
-          <h4>Slide {{$index}}</h4>
-          <p>{{slide.text}}</p>
+				<img width='550px' ng-src="{{slide.image}}" style="margin:auto;">
+        <div class="featured-caption">
+          <p class="featured-comment">{{slide.text}}</p>
+					<p class="featured-name">{{slide.name}}</p>
         </div>
 			</slide>
+			
+			<script id="template/carousel/carousel.html" type="text/ng-template">
+					<div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">
+						<ol class="carousel-indicators" ng-show="slides.length > 1">
+							<li ng-repeat="slide in slides track by $index" ng-class="{active: isActive(slide)}" ng-click="select(slide)"></li>
+						</ol>
+						<div class="carousel-inner" ng-transclude></div>
+							<a class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1"><span class=""></span></a>
+							<a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span class=""></span></a>
+				    </div>
+			</script>
 		</carousel>
-		
-		<div class="timeline-container">
-			<ul class="timeline-list">
-				<li>A</li>
-				<li>B</li>
-				<li>C</li>
-				<li>D</li>
-			</ul>
-		</div>
-	
 	</div>
 
   <p>
     yo: 
     {{testDude}}
   </p>
+
+
 </div>
 
-   
+<script type="text/javascript"> 
+	var global_carousel;
+
+	$(document).ready(function(){
+		global_carousel = $('#carousel').carousel();
+		
+		$('#timeline').on('click', 'li', function(e){
+			var index = $(this).index();
+			debugger
+			global_carousel.next();
+		});
+	});
+
+
+	
+</script>
