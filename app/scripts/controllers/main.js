@@ -2,7 +2,7 @@
 
 angular.module('hoGApp')
   .controller('MainCtrl', function ($scope, $http, Personservice) {
-
+    $scope.hashTags = [];
 /******************************
     Initialize Facebook SDK
 *******************************/
@@ -33,27 +33,37 @@ angular.module('hoGApp')
     };
 
     var getAlbum = function(){
+      //Flag for when we add new pic
+      var addedNew = false;
+
       console.log('getting Album');
             FB.api(
                 "/10152643970325120/photos",
                 function (photos) {
-                  console.log('size:', photos["data"].length);
-                  var found = false;
-                  for(var f in $scope.slides){
-                    if($scope.slides[f].picURL === photos["data"][photos["data"].length-1].source){
-                      console.log('dup!');
-                      found = true;
+                  /*
+                  FB api returns JSON array of photos
+                  Loop through array, adding new photos
+                  to DB. Compares picture URL's to avoid
+                  duplicates'
+                  */
+                  for(var photo in photos["data"]){
+                      var found = false;
+                      for(var f in $scope.slides){
+                        if($scope.slides[f].picURL === photos["data"][photo].source){
+                          found = true;
+                        }
+                      }
+                    if(!found){
+                      addFolk(photos["data"][photo]);
+                      addedNew = true;
                     }
                   }
-                  if(!found){
-                    console.log('new entry, so add!');
-                    addFolk(photos["data"][photos["data"].length-1]);
-                  }
-                  //addFolk(photos["data"][photos["data"].length-1]);
-
-
                 }
             );
+      if(addedNew){
+        folkPromise();
+      }
+      getTags();
     };
 
     (function(d, s, id){
@@ -67,8 +77,8 @@ angular.module('hoGApp')
 /***********************
 **** Add Folk to DB ****
 ***********************/
+//Recieves JSON Object and parses that for DB info//
     var addFolk = function(folkObject){
-      console.log(folkObject);
       var url = folkObject.source;
       var icon = folkObject.images[1].source;
       var description = folkObject.name.replace(/\n/g,"  ");
@@ -77,9 +87,8 @@ angular.module('hoGApp')
       var quote = things[1];
       var tags = things[2];
 
-      console.log('name:', name);
-      console.log('quote:', quote);
-      console.log('tags:', tags);
+      //Send to service to make POST request
+
       Personservice.newFolk(url,name,quote,tags,icon);
     }
 
@@ -95,4 +104,64 @@ angular.module('hoGApp')
   }
   folkPromise();
 
-  });
+
+/************************
+******* Get Tags ********
+************************/
+  var getTags = function(){
+    var hashTagString = '';
+    var hashTagArray = [];
+    var tagCount = {};
+    var found = false;
+    var max = 0;
+
+    //First loop is for each folk
+    for(var folk in $scope.slides){
+      hashTagString = $scope.slides[folk].hashTags;
+      console.log('hashTags for ', $scope.slides[folk].folkName, ": ", hashTagString);
+
+      //Split up String by commas and push to tag Array
+      hashTagArray = hashTagString[0].split(',');
+
+      //Loop for each Tag in Array
+      //Getting the Frequency Count for each tag
+      for(var tag in hashTagArray){
+        found = false;
+        var tagTrimmed = hashTagArray[tag].trim();
+        console.log('tag: ', tagTrimmed);
+        if(tagCount[tagTrimmed] == null){
+          tagCount[tagTrimmed] = 0;
+        }
+        else{
+          var count = tagCount[tagTrimmed];
+          count++;
+          tagCount[tagTrimmed] = count;
+        }
+        if($scope.hashTags.length > 0){
+          for(var hash in $scope.hashTags){
+            console.log("$scope.hashTags[hash]", $scope.hashTags[hash]);
+            console.log('tagTrimmed', tagTrimmed);
+            if($scope.hashTags[hash] == tagTrimmed){
+              found = true;
+            }
+          }
+          if(!found){
+            $scope.hashTags.push(tagTrimmed);
+          }
+        }
+        else{
+          $scope.hashTags.push(tagTrimmed);
+        }
+        
+      }
+    }
+    for(var count in tagCount){
+      console.log('count: ', count);
+    }
+    console.log('hashTags!', $scope.hashTags);
+  }
+
+  $scope.testClick = function(index){
+    console.log('here!', index);
+  }
+});
