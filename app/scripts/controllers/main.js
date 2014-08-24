@@ -37,9 +37,21 @@ angular.module('hoGApp')
             FB.api(
                 "/10152643970325120/photos",
                 function (photos) {
-                  console.log('size:', photos["data"].length)
-                 //addFolk(photos["data"][photos["data"].length-1]);
-                 console.log('Photo: ' , photos["data"][1]);
+                  console.log('size:', photos["data"].length);
+                  var found = false;
+                  for(var f in $scope.slides){
+                    if($scope.slides[f].picURL === photos["data"][photos["data"].length-1].source){
+                      console.log('dup!');
+                      found = true;
+                    }
+                  }
+                  if(!found){
+                    console.log('new entry, so add!');
+                    addFolk(photos["data"][photos["data"].length-1]);
+                  }
+                  //addFolk(photos["data"][photos["data"].length-1]);
+
+
                 }
             );
     };
@@ -70,5 +82,17 @@ angular.module('hoGApp')
       console.log('tags:', tags);
       Personservice.newFolk(url,name,quote,tags,icon);
     }
+
+/************************
+**** Get Folks from DB **
+************************/
+  var folkPromise = function(){
+      Personservice.getFolks()
+        .then(function(data){
+          $scope.slides = data;
+          console.log($scope.slides);
+        })
+  }
+  folkPromise();
 
   });
