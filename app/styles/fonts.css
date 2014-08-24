@@ -45,6 +45,22 @@
 	line-height: 65px;
 }
 
+.featured-comment
+{
+	font-family: 'OpenSansLight-Italic', sans-serif;
+	font-size: 48px;
+	color: #FFFFFF;
+	line-height: 65px;
+}
+
+.featured-name
+{
+	font-family: OpenSans-Semibold;
+	font-size: 64px;
+	color: #FFFFFF;
+	line-height: 87px;
+}
+
 h1,
 h2,
 h3,

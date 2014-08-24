@@ -1,0 +1,30 @@
+/* ol */
+.timeline 
+{
+	color:white;
+	width:100%;
+	text-align:justify;
+}
+
+.timeline:after
+{
+  display:inline-block;
+  width:100%;
+  content:' ';
+}
+
+.timeline li
+{
+  list-style:none;
+  display:inline-block;
+  width:50px;
+  height:50px;
+  overflow:hidden;
+  border-radius:25px;
+  
+}
+
+timeline li.active img
+{
+  border:1px solid white;
+}

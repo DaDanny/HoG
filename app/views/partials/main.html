@@ -4,17 +4,30 @@
 	
 	<h1 class="feature-title">Feature of the Week</h1>
 	
-	<div class="featured-content" ng-controller="CarouselCtrl">
-		
-		<carousel interval="myInterval">
-			<slide ng-repeat="slide in slides" active="slide.active" >
-				<img width='600px' height = '400px' ng-src="{{slide.picURL}}" style="margin:auto;">
-        <div class="carousel-caption">
-          <h2>{{slide.folkName}}</h2>
-          <p>{{slide.quote}}</p>
-          <h4 ng-repeat = "tag in slide.hashTags">{{tag}}</h4>
+	<div class="featured-content">
+	
+		<carousel id="carousel" interval="myInterval">
+			<slide ng-repeat="slide in slides" active="slide.active">
+				<img width='550px' ng-src="{{slide.picURL}}" style="margin:auto;">
+        <div class="featured-caption">
+          <p class="featured-comment">{{slide.folkName}}</p>
+					<p class="featured-name">{{slide.quote}}</p>
+					<h4 ng-repeat = "tag in slide.hashTags">{{tag}}</h4>
         </div>
 			</slide>
+			
+			<script id="template/carousel/carousel.html" type="text/ng-template">
+					<div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">
+						<ol class="timeline" ng-show="slides.length > 1">
+							<li ng-repeat="slide in slides track by $index" ng-class="{active: isActive($parent.$parent.$parent.slides[$index])}" ng-click="select(slide)" data-thing="{{$parent.$parent.slides[$index].active}}">
+								<img width='100px' ng-src="{{$parent.$parent.sanitizeUrl($parent.$parent.$parent.slides[$index].picURL)}}" style="margin:auto;">
+							</li>
+						</ol>
+						<div class="carousel-inner" ng-transclude></div>
+							<a class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1"><span></span></a>
+							<a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span></span></a>
+				    </div>
+			</script>
 		</carousel>
 		<br>
     <br>
@@ -25,8 +38,5 @@
     </div>
     <br>
     <br>
-	
 	</div>
 </div>
-
-   
