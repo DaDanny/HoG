@@ -3,6 +3,11 @@
 	padding-bottom:3em; /* same height as the indicator position bottom */
 }
 
+#carousel img
+{
+  margin:auto;
+}
+
 .carousel-control
 {
 	background:none !important;

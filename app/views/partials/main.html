@@ -6,7 +6,22 @@
 	
 		<carousel id="carousel" interval="myInterval">
 			<slide ng-repeat="slide in slides" active="slide.active">
-				<img width='550px' ng-src="{{slide.picURL}}" style="margin:auto;">
+				<div class="image-container">
+					
+					<div class="share-overlay">
+						<ul class="social-media-icons">
+							<li class="facebook-icon">
+								<a href="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=https%3A%2F%2Fwww.google.com%2Fdocs%2F&redirect_uri=https%3A%2F%2Fwww.instagram.com"><span class="socicon socicon-facebook"></span></a>
+							</li>
+							<li class="twitter-icon">
+								<a href="https://twitter.com/share?url=www.google.com"><span class="socicon socicon-twitter"></span></a>
+							</li>
+						</ul>
+					</div>
+					
+					<img width='550px' ng-src="{{slide.picURL}}">
+				</div>
+				
         <div class="featured-caption">
 					<p class="featured-comment">{{slide.quote}}</p>
 					<p class="featured-name">{{slide.folkName}}</p>
@@ -23,7 +38,7 @@
 							
 							<ol class="timeline" ng-show="slides.length > 1">
 								<li ng-repeat="slide in slides track by $index" ng-class="{active: isActive($parent.$parent.$parent.slides[$index])}" ng-click="select(slide)" class="active-is-{{$parent.$parent.slides[$index].active}}">
-									<img width='50px' ng-src="{{$parent.$parent.sanitizeUrl($parent.$parent.$parent.slides[$index].picURL)}}" style="margin:auto;">
+										<img width='50px' ng-src="{{$parent.$parent.sanitizeUrl($parent.$parent.$parent.slides[$index].picURL)}}" style="margin:auto;">
 								</li>
 							</ol>
 				    </div>
@@ -32,7 +47,12 @@
 		
 		
 		<section class="tag-section">
-			<h3 class="tag-question"> Some question about Gastown </h3>
+			
+			<div class="tag-icon">
+				<img src="images/icons/comment.png" alt="" />
+			</div>
+			
+			<h3 class="tag-question"> Your Gastown, Your Tag </h3>
 			
 			<div id="tag_container" class="tag-container">
 				<p class="most-popular">Most Popular: </p>

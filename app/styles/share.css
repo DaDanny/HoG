@@ -1,0 +1,90 @@
+.image-container
+{
+	position:relative;
+}
+
+.share-overlay
+{
+	padding:0;
+	margin:0;
+	position:absolute;
+	top:0;
+	left:50%;
+	margin-left:-275px;
+	opacity:0;
+	width:70%; /* arrow icons are total 30% widths */
+	max-width:550px; /* max width for images are 550px */
+	height:100%;
+	background:rgba(30, 30, 30, 0.71);
+	
+	transition: opacity 0.3s ease;
+}
+
+/* ul container for list of icons */
+.social-media-icons
+{
+  position:absolute;
+  /* text-align:justify; justify if we have more than 2 */ 
+  text-align:center;
+  width:100%;
+	top:50%;
+  margin-top:-72.5px;
+  padding:0 1em;
+}
+
+.social-media-icons::after
+{
+  display:inline-block;
+  width:100%;
+  content:' ';
+}
+
+.social-media-icons li
+{
+  display:inline-block;
+  width:50%;
+  max-width:145px;
+  max-height:145px;
+  border-radius:72.5px;
+  border:7px solid white;
+  text-align:center;
+  
+  /* remove padding if we have more than 2 social medias */
+  margin-left:2em;
+  margin-right:2em;
+}
+
+.social-media-icons .socicon
+{
+  font-size:75px;
+  line-height:140px;
+}
+
+/* attach hover state to the share container */
+.image-container:hover .share-overlay
+{
+  opacity:1;
+}
+
+/* hover colors for each icon */
+
+.facebook-icon:hover,
+.facebook-icon:hover a
+{
+  color:#3C5B97;
+  border-color:#3C5B97;
+}
+
+.instagram-icon:hover,
+.instagram-icon:hover a
+{
+  color:#406E92;
+  border-color:#406E92;
+}
+
+.twitter-icon:hover,
+.twitter-icon:hover a
+{
+  color:#59ADEB;
+  border-color:#59ADEB;
+}
