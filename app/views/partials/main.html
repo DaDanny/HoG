@@ -10,35 +10,42 @@
         <div class="featured-caption">
           <p class="featured-comment">{{slide.folkName}}</p>
 					<p class="featured-name">{{slide.quote}}</p>
-					<h4 ng-repeat = "tag in slide.hashTags">{{tag}}</h4>
+					<!--<h4 ng-repeat = "tag in slide.hashTags">{{tag}}</h4>-->
         </div>
 			</slide>
 			
 			<script id="template/carousel/carousel.html" type="text/ng-template">
 					<div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">
-						<ol class="timeline" ng-show="slides.length > 1">
-							<li ng-repeat="slide in slides track by $index" ng-class="{active: isActive($parent.$parent.$parent.slides[$index])}" ng-click="select(slide)" class="active-is-{{$parent.$parent.slides[$index].active}}">
-								<img width='50px' ng-src="{{$parent.$parent.sanitizeUrl($parent.$parent.$parent.slides[$index].picURL)}}" style="margin:auto;">
-							</li>
-						</ol>
+						
 						<div class="carousel-inner" ng-transclude></div>
 							<a class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1"><span></span></a>
 							<a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span></span></a>
+							
+							<ol class="timeline" ng-show="slides.length > 1">
+								<li ng-repeat="slide in slides track by $index" ng-class="{active: isActive($parent.$parent.$parent.slides[$index])}" ng-click="select(slide)" class="active-is-{{$parent.$parent.slides[$index].active}}">
+									<img width='50px' ng-src="{{$parent.$parent.sanitizeUrl($parent.$parent.$parent.slides[$index].picURL)}}" style="margin:auto;">
+								</li>
+							</ol>
 				    </div>
 			</script>
 		</carousel>
-		<br>
-    <br>
-		<div id="tag_container" style= "text-align:center;">
-      <div class="btn-group tag-container" ng-repeat = "tag in hashTags">
-        <a class="tag" btn-checkbox ng-model="checkModel.tag">{{tag}}</a>
-      </div>
-    </div>
-    <br>
-    <br>
-	</div>
-  <div>
-    <input type="text" ng-model="selected" typeahead="tag for tag in hashTags | filter:$viewValue | limitTo:8" class="form-control">
-  </div>
+		
+		
+		<section class="tag-section">
+			<h3 class="tag-question"> Some question about Gastown </h3>
+			
+			<div id="tag_container" class="tag-container">
+	      <div class="btn-group" ng-repeat = "tag in hashTags">
+	        <a class="tag" btn-checkbox ng-model="checkModel.tag">{{tag}}</a>
+	      </div>
+	    </div>
+
+		
+		  <div id="search_container">
+		    <input type="text" ng-model="selected" typeahead="tag for tag in hashTags | filter:$viewValue | limitTo:8" class="form-control">
+		  </div>
+		</div>
+	
+	</section>
 
 </div>
