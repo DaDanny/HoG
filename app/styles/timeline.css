@@ -4,6 +4,9 @@
 	color:white;
 	width:100%;
 	text-align:justify;
+	position:absolute;
+	bottom:-5em;
+	z-index:5;
 }
 
 .timeline:after
@@ -17,14 +20,24 @@
 {
   list-style:none;
   display:inline-block;
-  width:50px;
-  height:50px;
+  width:90px;
+  height:90px;
   overflow:hidden;
   border-radius:25px;
+  margin:0 20px;
+  cursor:pointer;
   
+  transform:scale(0.8);
+  transition:all ease-in 0.5s;
 }
 
-timeline li.active img
+.timeline li:hover
+{
+  transform:scale(1);
+}
+
+.timeline li.active img
 {
   border:1px solid white;
 }
+

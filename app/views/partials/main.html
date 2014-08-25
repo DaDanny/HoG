@@ -18,7 +18,7 @@
 					<div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">
 						<ol class="timeline" ng-show="slides.length > 1">
 							<li ng-repeat="slide in slides track by $index" ng-class="{active: isActive($parent.$parent.$parent.slides[$index])}" ng-click="select(slide)" data-thing="{{$parent.$parent.slides[$index].active}}">
-								<img width='100px' ng-src="{{$parent.$parent.sanitizeUrl($parent.$parent.$parent.slides[$index].picURL)}}" style="margin:auto;">
+								<img width='50px' ng-src="{{$parent.$parent.sanitizeUrl($parent.$parent.$parent.slides[$index].picURL)}}" style="margin:auto;">
 							</li>
 						</ol>
 						<div class="carousel-inner" ng-transclude></div>
