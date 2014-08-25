@@ -12,6 +12,7 @@ angular.module('hoGApp')
         .then(function(data){
           $scope.slides = data;
           console.log($scope.slides);
+          getTags();
         })
   }
   folkPromise();
@@ -101,5 +102,5 @@ angular.module('hoGApp')
   }
 
   
-  getTags();
+  
 });
