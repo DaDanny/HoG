@@ -60,8 +60,8 @@ angular.module('hoGApp')
             return $q.reject(response.data);
           });
       },
-      tester : function(){
-        console.log('test service function');
+      deleteFolk : function(id){
+        return $http.delete('/api/deleteFolk/'+id);
       }
     };
   });

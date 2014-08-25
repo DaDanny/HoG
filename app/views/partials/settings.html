@@ -1,37 +1,28 @@
 <div ng-include="'partials/navbar.html'"></div>
+<br>
+<br>
+<div>
+  <carousel id="carousel" interval="myInterval">
+      <slide ng-repeat="slide in slides" active="slide.active">
+        <img width='550px' ng-src="{{slide.picURL}}" style="margin:auto;">
+        <div class="featured-caption">
+        </div>
+      </slide>
+      
+      <script id="template/carousel/carousel.html" type="text/ng-template">
+          <div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">
+            
+            <div class="carousel-inner" ng-transclude></div>
+              <a class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1"><span></span></a>
+              <a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span></span></a>
+            </div>
+      </script>
+  </carousel>
 
-<div class="row">
-  <div class="col-sm-12">
-    <h1>Change Password</h1>
+  <div style = "text-align:center">
+    <button class = "btn btn-warning" ng-click = "logout()">Logout</button>
   </div>
-  <div class="col-sm-12">
-    <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
-    	
-      <div class="form-group">
-        <label>Current Password</label>
-
-        <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
-               mongoose-error/>    
-        <p class="help-block" ng-show="form.password.$error.mongoose">
-            {{ errors.other }}
-        </p>
-      </div>
-
-      <div class="form-group">
-        <label>New Password</label>
-
-        <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword" 
-               ng-minlength="3"
-               required/>
-        <p class="help-block"
-           ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
-          Password must be at least 3 characters.
-        </p>
-      </div>
-
-      <p class="help-block"> {{ message }} </p>
-
-      <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
-    </form>
-  </div>
+  <br>
+  <br>
+    
 </div>

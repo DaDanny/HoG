@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('hoGApp')
-  .controller('MainCtrl', function ($scope, $http, Personservice) {
+  .controller('MainCtrl', function ($scope, $http, Personservice, Auth) {
     $scope.hashTags = [];
 
 /************************
@@ -19,7 +19,7 @@ angular.module('hoGApp')
     Initialize Facebook SDK
 *******************************/
     //App ID
-    var fbID = 1439629336272699;
+    
     var dummyData = [{
       folkName: 'Danny Francken',
       picURL : 'https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-xfa1/v/t1.0-9/1604738_1583350615223588_2509651942323867440_n.jpg?oh=023ac7f88fc7c471de1aa2668b047b00&oe=545C2068&__gda__=1416783454_1dc46f89869fd433a7812f2ae6cae83f',
@@ -45,98 +45,6 @@ angular.module('hoGApp')
       quote : 'We should eat Timmys!',
       hashTags : ['Female', 'Design', 'MySQL', 'Food']
     }];
-    //$scope.slides = dummyData;
-    //console.log('dummyData', dummyData);
-
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : fbID,
-        xfbml      : true,
-        version    : 'v2.0'
-      });
-
-      FB.login(function(){
-         FB.api(
-          "/475351895119",
-          function (response) {
-            if (response && !response.error) {
-              console.log('success!');
-              getAlbum();
-            }
-            else{
-              console.log('error', response);
-            }
-          }
-      );
-        }, {scope: 'publish_actions,user_photos'}); 
-    };
-
-    var getAlbum = function(){
-      //Flag for when we add new pic
-      var addedNew = false;
-
-      console.log('getting Album');
-            FB.api(
-                "/10152643970325120/photos",
-                function (photos) {
-                  /*
-                  FB api returns JSON array of photos
-                  Loop through array, adding new photos
-                  to DB. Compares picture URL's to avoid
-                  duplicates'
-                  */
-                  for(var photo in photos["data"]){
-                      var found = false;
-                      for(var folk in $scope.slides){
-                        if($scope.slides[folk].picURL == photos["data"][photo].source){
-                          found = true;
-                        }
-                      }
-                    if(!found){
-                      addFolk(photos["data"][photo]);
-                      addedNew = true;
-                    }
-                  }
-                }
-            );
-      if(addedNew){
-        folkPromise();
-      }
-      folkPromise();
-    };
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-
-
-/***********************
-**** Add Folk to DB ****
-***********************/
-//Recieves JSON Object and parses that for DB info//
-    var addFolk = function(folkObject){
-      var url = folkObject.source;
-      var icon = folkObject.images[1].source;
-      var description = folkObject.name.replace(/\n/g,"  ");
-      var things = description.split('  ');
-      var name = things[0];
-      var quote = things[1];
-      var tags = things[2];
-
-      //Send to service to make POST request
-      Personservice.newFolk(url,name,quote,tags,icon)
-        .then(function(promise){
-          console.log('done!');
-          folkPromise();
-        })
-    }
-
-
-
 
 /************************
 ******* Get Tags ********
@@ -192,7 +100,6 @@ angular.module('hoGApp')
     console.log('hashTags!', $scope.hashTags);
   }
 
-  $scope.testClick = function(index){
-    console.log('here!', index);
-  }
+  
+  getTags();
 });
