@@ -70,6 +70,7 @@ angular.module('hoGApp')
       for(var tag in hashTagArray){
         found = false;
         var tagTrimmed = hashTagArray[tag].trim();
+        
         console.log('tag: ', tagTrimmed);
         if(tagCount[tagTrimmed] == null){
           tagCount[tagTrimmed] = 0;
@@ -100,6 +101,29 @@ angular.module('hoGApp')
     }
     console.log('hashTags!', $scope.hashTags);
   }
+
+  $scope.tagFilters = [];
+  $scope.filterTag = function(newTag){
+    var found = false;
+    var index = 0;
+    console.log('yo')
+    for(var tag in $scope.tagFilters){
+      if($scope.tagFilters[tag] == newTag){
+        found = true;
+        index = tag;
+      }
+    }
+    console.log('undedinfed:', $scope.hashTags[0])
+    if(found){
+      $scope.tagFilters.splice(index,1);
+    }
+    else{
+      $scope.tagFilters.push(newTag);
+    }
+    
+    console.log('filterTags:', $scope.tagFilters);
+  }
+
 
   
   

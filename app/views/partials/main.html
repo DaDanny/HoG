@@ -38,14 +38,14 @@
 				<p class="most-popular">Most Popular: </p>
 				
 	      <div class="btn-group" ng-repeat = "tag in hashTags">
-	        <a class="tag" btn-checkbox ng-model="checkModel.tag">{{tag}}</a>
+	        <a class="tag" btn-checkbox ng-model="checkModel.tag" ng-click="filterTag(tag)">{{tag}}</a>
 	      </div>
 	    </div>
 
 		
-		  <div id="search_container">
+		  <!-- <div id="search_container">
 		    <input type="text" ng-model="selected" typeahead="tag for tag in hashTags | filter:$viewValue | limitTo:8" class="form-control">
-		  </div>
+		  </div> -->
 		</div>
 	
 	</section>
