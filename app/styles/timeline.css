@@ -1,15 +1,17 @@
 /* ol */
 .timeline 
 {
+  display:block;
 	color:white;
 	width:100%;
 	text-align:justify;
 	position:absolute;
 	bottom:-5em;
 	z-index:5;
+	padding:0 1em;
 }
 
-.timeline:after
+.timeline::after
 {
   display:inline-block;
   width:100%;
@@ -23,6 +25,7 @@
   width:90px;
   height:90px;
   overflow:hidden;
+  border:3px solid #999;
   border-radius:50px;
   margin:0 20px;
   cursor:pointer;
@@ -36,27 +39,35 @@
   width:100px;
   height:100px;
   
+  opacity:0.4;
+  
+  /* don't want filter anymore */
+  /*
   filter: blur(4px);
   -webkit-filter: blur(4px);
   -moz-filter: blur(4px);
   -o-filter: blur(4px);
   -ms-filter: blur(4px);
+  */
 }
 
 .timeline li:hover
 {
+  border:3px solid white;
   transform:scale(1);
 }
 
 .timeline li.active-is-true img
 {
-  border:1px solid white;
+  opacity:1;
   
+  /* don't want filter anymore */
+  /*
   filter: blur(0px);
   -webkit-filter: blur(0px);
   -moz-filter: blur(0px);
   -o-filter: blur(0px);
   -ms-filter: blur(0px);
-  
+  */
 }
 
