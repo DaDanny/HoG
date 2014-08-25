@@ -17,7 +17,7 @@
 			<script id="template/carousel/carousel.html" type="text/ng-template">
 					<div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">
 						<ol class="timeline" ng-show="slides.length > 1">
-							<li ng-repeat="slide in slides track by $index" ng-class="{active: isActive($parent.$parent.$parent.slides[$index])}" ng-click="select(slide)" data-thing="{{$parent.$parent.slides[$index].active}}">
+							<li ng-repeat="slide in slides track by $index" ng-class="{active: isActive($parent.$parent.$parent.slides[$index])}" ng-click="select(slide)" class="active-is-{{$parent.$parent.slides[$index].active}}">
 								<img width='50px' ng-src="{{$parent.$parent.sanitizeUrl($parent.$parent.$parent.slides[$index].picURL)}}" style="margin:auto;">
 							</li>
 						</ol>
@@ -30,8 +30,8 @@
 		<br>
     <br>
 		<div id="tag_container" style= "text-align:center;">
-      <div class="btn-group" ng-repeat = "tag in hashTags">
-        <label  class="btn btn-primary" btn-checkbox ng-model="checkModel.tag">{{tag}}</label>
+      <div class="btn-group tag-container" ng-repeat = "tag in hashTags">
+        <a class="tag" btn-checkbox ng-model="checkModel.tag">{{tag}}</a>
       </div>
     </div>
     <br>

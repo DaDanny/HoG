@@ -23,7 +23,7 @@
   width:90px;
   height:90px;
   overflow:hidden;
-  border-radius:25px;
+  border-radius:50px;
   margin:0 20px;
   cursor:pointer;
   
@@ -31,13 +31,32 @@
   transition:all ease-in 0.5s;
 }
 
+.timeline li img
+{
+  width:100px;
+  height:100px;
+  
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
+}
+
 .timeline li:hover
 {
   transform:scale(1);
 }
 
-.timeline li.active img
+.timeline li.active-is-true img
 {
   border:1px solid white;
+  
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  
 }
 

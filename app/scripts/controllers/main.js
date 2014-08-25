@@ -34,7 +34,6 @@ angular.module('hoGApp')
       hashTags : ['Female', 'Design', 'MySQL', 'Food']
     }];
     $scope.slides = dummyData;
-    console.log('dummyData', dummyData);
     
 
     // window.fbAsyncInit = function() {
