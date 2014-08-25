@@ -61,6 +61,14 @@
 	line-height: 87px;
 }
 
+.most-popular
+{
+  font-family: 'OpenSans-Light', sans-serif;
+  font-size: 36px;
+  color: #FFFFFF;
+  line-height: 49px;
+}
+
 h1,
 h2,
 h3,
@@ -70,7 +78,7 @@ h6,
 p,
 a
 {
-	font-family:'Open Sans', sans-serif;
-	font-weight:100;
+	font-family:'OpenSans-Light', sans-serif;
+	color:white;
 }
 
