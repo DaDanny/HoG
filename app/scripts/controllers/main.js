@@ -113,6 +113,7 @@ angular.module('hoGApp')
        fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
 
+
 /***********************
 **** Add Folk to DB ****
 ***********************/
