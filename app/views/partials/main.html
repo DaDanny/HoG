@@ -8,8 +8,8 @@
 			<slide ng-repeat="slide in slides" active="slide.active">
 				<img width='550px' ng-src="{{slide.picURL}}" style="margin:auto;">
         <div class="featured-caption">
-          <p class="featured-comment">{{slide.folkName}}</p>
-					<p class="featured-name">{{slide.quote}}</p>
+					<p class="featured-comment">{{slide.quote}}</p>
+					<p class="featured-name">{{slide.folkName}}</p>
 					<!--<h4 ng-repeat = "tag in slide.hashTags">{{tag}}</h4>-->
         </div>
 			</slide>
@@ -35,6 +35,8 @@
 			<h3 class="tag-question"> Some question about Gastown </h3>
 			
 			<div id="tag_container" class="tag-container">
+				<p class="most-popular">Most Popular: </p>
+				
 	      <div class="btn-group" ng-repeat = "tag in hashTags">
 	        <a class="tag" btn-checkbox ng-model="checkModel.tag">{{tag}}</a>
 	      </div>
