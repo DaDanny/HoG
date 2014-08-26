@@ -6,6 +6,8 @@
 #carousel img
 {
   margin:auto;
+  width:100%;
+  max-width:550px;
 }
 
 .carousel-control
@@ -47,4 +49,16 @@
 .carousel-indicators 
 {
 	bottom:-16px; /* font size are bigger, so indicator positioning needs to be changed */
+}
+
+/* box shadow effect, need to make some CSS adjustments */
+
+.image-container
+{
+  top:25px; /* offset the box shadow */
+}
+
+.featured-caption
+{
+  margin-top:25px;
 }

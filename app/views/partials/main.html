@@ -20,7 +20,7 @@
 						</ul>
 					</div>
 					
-					<img width='550px' ng-src="{{slide.picURL}}">
+					<img class="white-shadow" ng-src="{{slide.picURL}}">
 				</div>
 				
         <div class="featured-caption">
@@ -53,10 +53,10 @@
 				<img src="images/icons/comment.png" alt="" />
 			</div>
 			
-			<h3 class="tag-question"> Your Gastown, Your Tag </h3>
+			<h3 class="tag-question"> Your Gastown, Your Tags </h3>
 			
 			<div id="tag_container" class="tag-container">
-				<p class="most-popular">Most Popular: </p>
+				<p class="most-popular">Most Talked: </p>
 				
 	      <div class="btn-group" ng-repeat = "tag in hashTags">
 	        <a class="tag" btn-checkbox ng-model="checkModel.tag">{{tag}}</a>
