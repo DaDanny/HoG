@@ -7,7 +7,6 @@
 		<carousel id="carousel" interval="myInterval">
 			<slide ng-repeat="slide in slides" active="slide.active">
 				<div class="image-container">
-					
 					<div class="share-overlay">
 						<ul class="social-media-icons">
 							<li class="facebook-icon">
@@ -63,7 +62,7 @@
 				<p class="most-popular">Most Talked: </p>
 				
 	      <div class="btn-group" ng-repeat = "tag in hashTags">
-	        <a class="tag" btn-checkbox ng-model="checkModel.tag">{{tag}}</a>
+	        <a href="#" class="tag" btn-checkbox ng-model="checkModel.tag">{{tag}}</a>
 	      </div>
 	    </div>
 
