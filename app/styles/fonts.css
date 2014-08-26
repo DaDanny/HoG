@@ -55,44 +55,44 @@
 	color:white;
 	text-align:center;
 	font-family: 'OpenSans-Light', sans-serif;
-	font-size: 48px;
+	font-size: 24px;
 	color: #FFFFFF;
-	line-height: 65px;
+	line-height: 36px;
 }
 
 .featured-comment
 {
 	font-family: 'OpenSansLight-Italic', sans-serif;
-	font-size: 48px;
+	font-size: 24px;
 	color: #FFFFFF;
-	line-height: 65px;
+	line-height: 36px;
 }
 
 .featured-name
 {
 	font-family: 'OpenSans-Semibold', sans-serif;
-	font-size: 64px;
+	font-size: 32px;
 	color: #FFFFFF;
-	line-height: 87px;
+	line-height: 48px;
 }
 
 .most-popular
 {
   font-family: 'OpenSans-Light', sans-serif;
-  font-size: 36px;
+  font-size: 18px;
   color: #FFFFFF;
-  line-height: 49px;
+  line-height: 27px;
 }
 
 .tag
 {
-  font-size:36px;
+  font-size:18px;
   line-height:1.5;
 }
 
 .tag-question
 {
-  font-size:64px;
+  font-size:32px;
 }
 
 h1,

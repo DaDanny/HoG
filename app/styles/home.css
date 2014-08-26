@@ -10,12 +10,12 @@ header
 	padding:0;
 	position:relative;
 	text-align:center;
-	padding:32px 0;
+	padding:32px 0 0 0;
 }
 
 header img
 {
-  width:100%;
+  width:75%;
 }
 
 .background-image-container

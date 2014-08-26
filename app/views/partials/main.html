@@ -34,7 +34,7 @@
 							<a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span></span></a>
 							
 							<div class="float-wrapper">
-								<ol class="timeline slides-{{slides.length}}" ng-show="slides.length > 1">
+								<ol class="timeline slides-{{slides.length}}" ng-show="slides.length > 0">
 									<li ng-repeat="slide in slides track by $index" ng-class="{active: isActive($parent.$parent.$parent.slides[$index])}" ng-click="select(slide)" class="active-is-{{$parent.$parent.slides[$index].active}}">
 											<img width='50px' ng-src="{{$parent.$parent.sanitizeUrl($parent.$parent.$parent.slides[$index].picURL)}}" style="margin:auto;">
 									</li>
@@ -47,27 +47,22 @@
 		</carousel>
 		
 		
-		<section class="tag-section">
-			
-			<div class="tag-icon">
-				<img src="images/icons/comment.png" alt="" />
-			</div>
+		<section class="tag-section" ng-class="{ open: areTagsOpen }" ng-init="areTagsOpen = false">
 			
 			<h3 class="tag-question"> Your Gastown, Your Tags </h3>
 			
+			<hr class="white-line" />
+			
 			<div id="tag_container" class="tag-container">
-				<p class="most-popular">Most Talked: </p>
+				<p class="most-popular">Most Popular: </p>
 	      <div class="btn-group" ng-repeat = "tag in hashTags" >
 	        <a class="tag"  btn-checkbox ng-model="checkModel.tag" ng-click = "updateFilter(tag)">{{tag}}</a>
 	      </div>
 	    </div>
-
-		
-		  <!-- <div id="search_container">
-		    <input type="text" ng-model="selected" typeahead="tag for tag in hashTags | filter:$viewValue | limitTo:8" class="form-control">
-		  </div> -->
-		</div>
-	
 	</section>
+	
+	<div class="tag-icon" ng-click="areTagsOpen = !areTagsOpen">
+		<img src="images/icons/comment.png" alt="" />
+	</div>
 
 </div>
