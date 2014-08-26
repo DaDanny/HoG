@@ -47,8 +47,22 @@ angular.module('hoGApp')
         });
         return promise;
       },
-      getFolks : function(){
-        return $http.get('/api/allFolks')
+      getFolks : function(tags){
+        var urlString = '/api/allFolks';
+        if(tags != undefined){
+          console.log('tags in service: ', tags);
+          var queryString = tags[0];
+          if(tags.length > 1){
+            for(var i = 1; i<tags.length; i++){
+              queryString = queryString + ',' + tags[i];
+            }
+          }
+          console.log('qs: ', queryString);
+          if(queryString != undefined){
+            urlString = urlString + '/' + queryString
+          }
+        }
+        return $http.get(urlString)
           .then(function(response){
             if(typeof response.data === 'object'){
               return response.data;

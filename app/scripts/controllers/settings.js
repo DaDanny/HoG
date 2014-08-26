@@ -103,9 +103,14 @@ var whatsOnLocal = function(photos){
       var name = things[0];
       var quote = things[1];
       var tags = things[2];
-
+      console.log('tags: ', tags);
+      var hashTagArray = tags.split(',');
+      for(var tag in hashTagArray){
+        hashTagArray[tag] = hashTagArray[tag].trim();
+      }
+      console.log('settings: ', hashTagArray);
       //Send to service to make POST request
-      Personservice.newFolk(url,name,quote,tags,icon)
+      Personservice.newFolk(url,name,quote,hashTagArray,icon)
         .then(function(promise){
           console.log('done!');
           folkPromise();
