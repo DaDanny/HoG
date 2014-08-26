@@ -3,15 +3,17 @@
 angular.module('hoGApp')
   .controller('MainCtrl', function ($scope, $http, Personservice, Auth) {
     $scope.hashTags = [];
-
 /************************
 **** Get Folks from DB **
 ************************/
   var folkPromise = function(){
-      Personservice.getFolks()
+      Personservice.getFolks($scope.tagFilters)
         .then(function(data){
           $scope.slides = data;
-          console.log($scope.slides);
+          $scope.filteredLength = data.length;
+          console.log('data: ', data);
+          console.log('filteredLength: ', $scope.filteredLength);
+          $scope.hashTags = [];
           getTags();
         })
   }
@@ -59,20 +61,26 @@ angular.module('hoGApp')
 
     //First loop is for each folk
     for(var folk in $scope.slides){
-      hashTagString = $scope.slides[folk].hashTags;
-      console.log('hashTags for ', $scope.slides[folk].folkName, ": ", hashTagString);
+      //hashTagString = $scope.slides[folk].hashTags;
+      console.log('returned as: ' , $scope.slides[folk].hashTags);
+      hashTagArray = $scope.slides[folk].hashTags;
+      // //Split up String by commas and push to tag Array
+      // hashTagArray = hashTagString[0].split(',');
+      // for(var tag in hashTagArray){
+      //   hashTagArray[tag] = hashTagArray[tag].trim();
+      // }
+      // $scope.slides[folk].hashTags = hashTagArray;
+      //console.log('hashTags for ', $scope.slides[folk].folkName, ": ", $scope.slides[folk].hashTags);
 
-      //Split up String by commas and push to tag Array
-      hashTagArray = hashTagString[0].split(',');
+
 
       //Loop for each Tag in Array
       //Getting the Frequency Count for each tag
       for(var tag in hashTagArray){
         found = false;
         var tagTrimmed = hashTagArray[tag].trim();
-        console.log('tag: ', tagTrimmed);
         if(tagCount[tagTrimmed] == null){
-          tagCount[tagTrimmed] = 0;
+          tagCount[tagTrimmed] = 1;
         }
         else{
           var count = tagCount[tagTrimmed];
@@ -92,15 +100,27 @@ angular.module('hoGApp')
         else{
           $scope.hashTags.push(tagTrimmed);
         }
-        
       }
     }
-    for(var count in tagCount){
-      console.log('count: ', count);
-    }
-    console.log('hashTags!', $scope.hashTags);
   }
 
-  
-  
+  $scope.tagFilters = [];
+  $scope.updateFilter = function(newTag){
+    var found = false;
+    var index = 0;
+    for(var tag in $scope.tagFilters){
+      if($scope.tagFilters[tag] == newTag){
+        found = true;
+        index = tag;
+      }
+    }
+    if(found){
+      $scope.tagFilters.splice(index,1);
+    }
+    else{
+      $scope.tagFilters.push(newTag);
+    }
+    folkPromise();
+    console.log('filterTags:', $scope.tagFilters);
+  }
 });
