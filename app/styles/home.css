@@ -48,3 +48,8 @@ header img
 	left:0;
 	width:100%;
 }
+
+#search_container
+{
+  display:none;
+}

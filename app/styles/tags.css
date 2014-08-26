@@ -42,7 +42,7 @@
   background-color:white;
   color:black;
   border-color:black;
-  transition:color 0.3s ease;
+  transition:background-color 0.3s ease;
 }
 
 .tag:hover
