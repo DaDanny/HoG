@@ -37,12 +37,16 @@
 							<a class="left carousel-control" ng-click="prev()" ng-show="slides.length > 1"><span></span></a>
 							<a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"><span></span></a>
 							
-							<ol class="timeline" ng-show="slides.length > 1">
-								<li ng-repeat="slide in slides track by $index" ng-class="{active: isActive($parent.$parent.$parent.slides[$index])}" ng-click="select(slide)" class="active-is-{{$parent.$parent.slides[$index].active}}">
-										<img width='50px' ng-src="{{$parent.$parent.sanitizeUrl($parent.$parent.$parent.slides[$index].picURL)}}" style="margin:auto;">
-								</li>
-							</ol>
+							<div class="float-wrapper">
+								<ol class="timeline slides-{{slides.length}}" ng-show="slides.length > 1">
+									<li ng-repeat="slide in slides track by $index" ng-class="{active: isActive($parent.$parent.$parent.slides[$index])}" ng-click="select(slide)" class="active-is-{{$parent.$parent.slides[$index].active}}">
+											<img width='50px' ng-src="{{$parent.$parent.sanitizeUrl($parent.$parent.$parent.slides[$index].picURL)}}" style="margin:auto;">
+									</li>
+								</ol>
+							</div>
 				    </div>
+				
+					
 			</script>
 		</carousel>
 		
