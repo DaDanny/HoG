@@ -1,13 +1,12 @@
 .carousel
 {
   z-index:5;
-  height:650px;
 }
 
 .image-container img
 {
   margin:auto;
-  height:400px;
+  height:45vh;
   width:auto;
 }
 
