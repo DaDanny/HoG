@@ -3,59 +3,66 @@
 angular.module('hoGApp')
   .controller('SettingsCtrl', function ($scope, User, Auth, Personservice, $location) {
     $scope.errors = {};
-    var fbID = 1439629336272699;
+    var fbID = 1470155896577390;
     window.fbAsyncInit = function() {
       FB.init({
         appId      : fbID,
         xfbml      : true,
         version    : 'v2.0'
       });
-
-      FB.login(function(){
-         FB.api(
-          "/475351895119",
-          function (response) {
-            if (response && !response.error) {
-              console.log('success!');
-              whatsOnFB();
-            }
-            else{
-              console.log('error', response);
-            }
-          }
+      var urlString = "https://graph.facebook.com/oauth/access_token?client_id=1470155896577390&client_secret=b122334a3c75a4542acfef6a631afca5&grant_type=client_credentials";
+      var accessCode = '';
+      $.get(
+          urlString,
+          {paramOne : 1, paramX : 'abc'},
+          function(data) {
+             console.log(data);
+             accessCode = data;
+             accessCode = accessCode.slice(13);
+             console.log(accessCode);
+             FB.api('/715770595164882/photos', {
+                access_token : accessCode
+              },function(response){
+                console.log('response:', response["data"]);
+                  whatsOnFB(response["data"]);
+                  console.log(response);
+                });
+              }
       );
-        }, {scope: 'publish_actions,user_photos'}); 
+
+      // FB.login(function(){
+      //    FB.api(
+      //     "/475351895119",
+      //     function (response) {
+      //       if (response && !response.error) {
+      //         console.log('success!');
+      //         whatsOnFB();
+      //       }
+      //       else{
+      //         console.log('error', response);
+      //       }
+      //     }
+      // );
+      //   }, {scope: 'publish_actions,user_photos'}); 
     };
 
-    var whatsOnFB = function(){
+    var whatsOnFB = function(photoAlbum){
       //Flag for when we add new pic
       var addedNew = false;
-
-      console.log('getting Album');
-            FB.api(
-                "/10152643970325120/photos",
-                function (photos) {
-                  /*
-                  FB api returns JSON array of photos
-                  Loop through array, adding new photos
-                  to DB. Compares picture URL's to avoid
-                  duplicates'
-                  */
-                  for(var photo in photos["data"]){
-                      var found = false;
-                      for(var folk in $scope.slides){
-                        if($scope.slides[folk].picURL == photos["data"][photo].source){
-                          found = true;
-                        }
-                      }
-                    if(!found){
-                      addFolk(photos["data"][photo]);
-                      addedNew = true;
-                    }
-                  }
-                  whatsOnLocal(photos["data"]);
-                }
-            );
+      for(var photo in photoAlbum){
+          var found = false;
+          for(var folk in $scope.slides){
+            if($scope.slides[folk].picURL == photoAlbum[photo].source){
+              found = true;
+            }
+          }
+        if(!found){
+          console.log('youyoafdgf', photoAlbum[photo]);
+          addFolk(photoAlbum[photo]);
+          addedNew = true;
+        }
+      }
+      whatsOnLocal(photoAlbum);
       if(addedNew){
         folkPromise();
       }
@@ -96,8 +103,9 @@ var whatsOnLocal = function(photos){
 ***********************/
 //Recieves JSON Object and parses that for DB info//
     var addFolk = function(folkObject){
+      console.log('folkObject: ' , folkObject);
       var url = folkObject.source;
-      var icon = folkObject.images[1].source;
+      var icon = '';
       var description = folkObject.name.replace(/\n/g,"  ");
       var things = description.split('  ');
       var name = things[0];
