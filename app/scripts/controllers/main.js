@@ -3,6 +3,7 @@
 angular.module('hoGApp')
   .controller('MainCtrl', function ($scope, $http, Personservice, Auth) {
     $scope.hashTags = [];
+    $scope.displayTags = false;
 /************************
 **** Get Folks from DB **
 ************************/
@@ -123,4 +124,12 @@ angular.module('hoGApp')
     folkPromise();
     console.log('filterTags:', $scope.tagFilters);
   }
+  
+  
+  $scope.toggleTags = function(){
+    $scope.displayTags = true;
+    
+    console.log($scope.displayTags);
+  }
+  
 });

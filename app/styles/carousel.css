@@ -1,6 +1,7 @@
-#carousel
+.carousel
 {
-  
+  z-index:5;
+  height:650px;
 }
 
 .image-container img

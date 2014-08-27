@@ -43,9 +43,8 @@
 
 .timeline li img
 {
-  width:100px;
   height:100px;
-  
+  width:auto; 
   opacity:0.4;
   
   /* don't want filter anymore */
