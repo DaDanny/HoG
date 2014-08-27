@@ -78,9 +78,17 @@
 {
   position:absolute;
   top:-72px;
-  right:15px;
-  width:52px;
+  right:30px;
+  width:36px;
   height:auto;
+  
+  cursor:pointer;
+  transition: opacity 0.3 ease;
+}
+
+.tag-icon:hover
+{
+  opacity:1;
 }
 
 .tag-icon img

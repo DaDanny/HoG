@@ -6,7 +6,8 @@
 .image-container img
 {
   margin:auto;
-  height:45vh;
+  /* height:45vh; */
+  height:400px;
   width:auto;
 }
 
