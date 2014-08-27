@@ -4,6 +4,8 @@ angular.module('hoGApp')
   .controller('SettingsCtrl', function ($scope, User, Auth, Personservice, $location) {
     $scope.errors = {};
     var fbID = 1470155896577390;
+    $scope.message = "You have successfully updated the photo album. Pictures on the site now reflect those of the Humans of GasTown Facebook page.";
+    $scope.updatedDB = false;
     window.fbAsyncInit = function() {
       FB.init({
         appId      : fbID,
@@ -42,6 +44,7 @@ angular.module('hoGApp')
             }
           }
         if(!found){
+          $scope.updatedDB = true;
           console.log('youyoafdgf', photoAlbum[photo]);
           addFolk(photoAlbum[photo]);
           addedNew = true;
@@ -74,13 +77,12 @@ var whatsOnLocal = function(photos){
       }
     }
     if(!found){
+      $scope.updatedDB = true;
       deleteFolk($scope.slides[slide]);
       deleted = true;
     }
   }
-  if(deleted){
-    folkPromise();
-  }
+  folkPromise();
 }
 
 /***********************
@@ -131,7 +133,7 @@ var whatsOnLocal = function(photos){
         .then(function(data){
           $scope.slides = data;
           console.log($scope.slides);
-        })
+        });
     }
     folkPromise();
 

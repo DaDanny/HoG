@@ -15,7 +15,7 @@ angular.module('hoGApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/');
+          $location.path('/admin');
         })
         .catch( function(err) {
           err = err.data;
