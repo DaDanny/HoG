@@ -1,13 +1,13 @@
 #carousel
 {
-
+  
 }
 
-#carousel img
+.image-container img
 {
   margin:auto;
-  width:100%;
-  max-width:550px;
+  height:400px;
+  width:auto;
 }
 
 .carousel-control

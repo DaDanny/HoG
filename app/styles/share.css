@@ -10,10 +10,9 @@
 	position:absolute;
 	top:0;
 	left:50%;
-	margin-left:-275px;
+	width:533px;
+	margin-left:-266px;
 	opacity:0;
-	width:70%; /* arrow icons are total 30% widths */
-	max-width:550px; /* max width for images are 550px */
 	height:100%;
 	background:rgba(30, 30, 30, 0.71);
 	
@@ -28,8 +27,9 @@
   text-align:center;
   width:100%;
 	top:50%;
-  margin-top:-72.5px;
+	margin-top:-75px;
   padding:0 1em;
+  overflow:hidden;
 }
 
 .social-media-icons::after
@@ -39,13 +39,12 @@
   content:' ';
 }
 
-.social-media-icons li
+.social-media-icons > li
 {
   display:inline-block;
   width:50%;
-  max-width:145px;
-  max-height:145px;
-  border-radius:72.5px;
+  max-width:150px;
+  border-radius:50%;
   border:7px solid white;
   text-align:center;
   
