@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -7,20 +7,33 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/">
-    <title></title>
+    <title>Humans of Gastown</title>
+		<link rel="icon" href="favicon.png" type="image/x-icon" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(app) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
 		<!-- Bootstrap CDN -->
 		<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+		
+		<!-- TODO: minify css files -->
+		<link rel="stylesheet" href="styles/normalize.css">
 		<link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/normalize.css">
 		<link rel="stylesheet" href="styles/home.css">
+		<link rel="stylesheet" href="styles/carousel.css">	
+		<link rel="stylesheet" href="styles/timeline.css">	
+		<link rel="stylesheet" href="styles/tags.css">	
+		<link rel="stylesheet" href="styles/share.css">	
+		<link rel="stylesheet" href="styles/modifiers.css">	
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="styles/fonts.css">	
+		<link rel="stylesheet" href="styles/socicon.css">	
+		<script src='scripts/jquery.js'></script>
     <!-- endbuild -->
   </head>
   <body ng-app="hoGApp">
@@ -72,8 +85,10 @@
         <script src="scripts/services/user.js"></script>
         <script src="scripts/directives/mongooseError.js"></script>
         <script src="scripts/controllers/about.js"></script>
-		<script src="scripts/controllers/CarouselCtrl.js"></script>
+				<script src="scripts/controllers/CarouselCtrl.js"></script>
         <script src="scripts/services/PersonService.js"></script>
+        <script src="scripts/controllers/Carousel.js"></script>
+        <script src="scripts/filters/filterTag.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -1,0 +1,65 @@
+.carousel
+{
+  z-index:5;
+}
+
+.image-container img
+{
+  margin:auto;
+  /* height:45vh; */
+  height:400px;
+  width:auto;
+}
+
+.carousel-control
+{
+	background:none !important;
+	cursor:pointer;
+}
+
+.carousel-control > span
+{
+	width:40px !important;
+	height:70px !important;
+	background-repeat:none !important;
+	
+	/* previous rules from bootstrap */
+	position:absolute;
+	top:50%;
+	z-index:5;
+	display:inline-block;
+	margin-top:-20px;
+}
+
+.carousel-control > span:before
+{
+	content:'' !important;
+}
+
+.carousel-control.right > span
+{
+	background-image:url('../images/icons/next.png');
+	right:50%;
+}
+.carousel-control.left > span
+{
+	background-image:url('../images/icons/previous.png');
+	left:50%;
+}
+
+.carousel-indicators 
+{
+	bottom:-16px; /* font size are bigger, so indicator positioning needs to be changed */
+}
+
+/* box shadow effect, need to make some CSS adjustments */
+
+.image-container
+{
+  top:25px; /* offset the box shadow */
+}
+
+.featured-caption
+{
+  margin-top:25px;
+}

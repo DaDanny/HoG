@@ -1,0 +1,110 @@
+/* fonts */
+@font-face {
+  font-family:'Caviar';
+  font-weight: 300;
+  src: url('../fonts/title_CaviarDreams.ttf');
+}
+
+@font-face {
+	font-family:'OpenSans-Light';
+	src: url('../fonts/OpenSans-Light.ttf');
+}
+
+@font-face {
+	font-family:'OpenSans-LightItalic';
+	src: url('../fonts/OpenSans-LightItalic.ttf');
+}
+
+@font-face {
+	font-family:'OpenSans-Regular';
+	src: url('../fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+	font-family:'OpenSans-Semibold';
+	src: url('../fonts/OpenSans-Semibold.ttf');
+}
+
+@font-face {
+    font-family: 'socicon';
+    src: url('font/socicon-webfont.eot');
+    src: url('font/socicon-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/socicon-webfont.woff') format('woff'),
+         url('font/socicon-webfont.ttf') format('truetype'),
+         url('font/socicon-webfont.svg#sociconregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.socicon {
+    font-family: 'socicon' !important;
+}
+
+.big-title
+{
+	font-family:'Caviar', sans-serif;
+	font-size:72px;
+	color: #FFFFFF;
+	line-height: 83px;
+	letter-spacing: 3px;
+	text-indent:16px;
+}
+
+.feature-title
+{
+	color:white;
+	text-align:center;
+	font-family: 'OpenSans-Light', sans-serif;
+	font-size: 24px;
+	color: #FFFFFF;
+	line-height: 36px;
+}
+
+.featured-comment
+{
+	font-family: 'OpenSansLight-Italic', sans-serif;
+	font-size: 24px;
+	color: #FFFFFF;
+	line-height: 36px;
+}
+
+.featured-name
+{
+	font-family: 'OpenSans-Semibold', sans-serif;
+	font-size: 32px;
+	color: #FFFFFF;
+	line-height: 48px;
+}
+
+.most-popular
+{
+  font-family: 'OpenSans-Light', sans-serif;
+  font-size: 18px;
+  color: #FFFFFF;
+  line-height: 27px;
+}
+
+.tag
+{
+  font-size:18px;
+  line-height:1.5;
+}
+
+.tag-question
+{
+  font-size:32px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a
+{
+	font-family:'OpenSans-Light', sans-serif;
+	color:white;
+}
+

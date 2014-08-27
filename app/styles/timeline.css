@@ -1,0 +1,78 @@
+.float-wrapper
+{
+  overflow:scroll;
+}
+
+/* ol */
+.timeline 
+{
+  display:block;
+	color:white;
+	width:999999px;
+	text-align:justify;
+	z-index:5;
+	padding:0 1em;
+	overflow:auto;
+}
+
+.timeline::after
+{
+  width:100%;
+  content:' ';
+  display:inline-block;
+}
+
+.timeline li
+{
+  list-style:none;
+  display:inline-block;
+  float:left;
+  width:100%;
+  height:100%;
+  max-width:90px;
+  max-height:90px;
+  overflow:hidden;
+  border:3px solid #999;
+  border-radius:50px;
+  margin:0 20px;
+  cursor:pointer;
+  
+  transform:scale(0.8);
+  transition:all ease-in 0.3s;
+}
+
+.timeline li img
+{
+  height:100px;
+  width:auto; 
+  opacity:0.4;
+  
+  /* don't want filter anymore */
+  /*
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
+  */
+}
+
+.timeline li:hover
+{
+  border:3px solid white;
+  transform:scale(1);
+}
+
+.timeline li.active-is-true img
+{
+  opacity:1;
+  
+  /* don't want filter anymore */
+  /*
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  */
+}

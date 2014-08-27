@@ -6,7 +6,6 @@ angular.module('hoGApp')
     // Get currentUser from cookie
     $rootScope.currentUser = $cookieStore.get('user') || null;
     $cookieStore.remove('user');
-
     return {
 
       /**

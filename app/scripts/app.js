@@ -30,6 +30,9 @@ angular.module('hoGApp', [
         templateUrl: 'partials/about',
         controller: 'AboutCtrl'
       })
+      .when('/admin',{
+        redirectTo: '/settings'
+      })
       .otherwise({
         redirectTo: '/'
       });
