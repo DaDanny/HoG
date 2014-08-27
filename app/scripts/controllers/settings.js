@@ -29,21 +29,6 @@ angular.module('hoGApp')
                 });
               }
       );
-
-      // FB.login(function(){
-      //    FB.api(
-      //     "/475351895119",
-      //     function (response) {
-      //       if (response && !response.error) {
-      //         console.log('success!');
-      //         whatsOnFB();
-      //       }
-      //       else{
-      //         console.log('error', response);
-      //       }
-      //     }
-      // );
-      //   }, {scope: 'publish_actions,user_photos'}); 
     };
 
     var whatsOnFB = function(photoAlbum){
