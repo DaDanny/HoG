@@ -34,6 +34,15 @@
   text-align:justify;
 }
 
+@media only screen and (max-width:550px)
+{
+  .tag-container
+  {
+    padding:0;
+  }
+  
+}
+
 .tag-container::after
 {
   display:inline-block;
@@ -76,14 +85,24 @@
 .tag-icon
 {
   position:absolute;
-  top:-72px;
-  right:30px;
+  bottom:4vh;
+  right:36px;
   width:36px;
   height:auto;
   opacity:0.7;
   
   cursor:pointer;
   transition: opacity 0.3 ease;
+}
+
+@media only screen and (max-width:480px)
+{
+  .tag-icon
+  {
+    bottom:0;
+    width:24px;
+    right:24px;
+  }
 }
 
 .tag-icon:hover

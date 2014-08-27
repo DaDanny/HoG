@@ -1,5 +1,14 @@
 <div ng-include="'partials/navbar'"></div>
 <div class="main-content" ng-controller="CarouselCtrl">
+	<header class="pseudo-header">
+		<img src="images/logo.png" alt="Humans of Gastown"/>
+
+		<div class="tag-icon" ng-click="areTagsOpen = !areTagsOpen">
+			<img src="images/icons/funnelicon.png" alt="" />
+		</div>
+	</header>
+	
+	
 	<div class="featured-content">
 		<carousel id="carousel">
 			<slide ng-repeat="slide in slides" active="slide.active">
@@ -58,9 +67,5 @@
 	      </div>
 	    </div>
 	</section>
-	
-	<div class="tag-icon" ng-click="areTagsOpen = !areTagsOpen">
-		<img src="images/icons/funnelicon.png" alt="" />
-	</div>
 
 </div>

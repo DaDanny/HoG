@@ -19,6 +19,16 @@
 	transition: opacity 0.3s ease;
 }
 
+
+@media only screen and (max-width:550px)
+{
+  .share-overlay
+  {
+    width:248px;
+    margin-left:-124px;
+  }
+}
+
 /* ul container for list of icons */
 .social-media-icons
 {
@@ -57,6 +67,26 @@
 {
   font-size:75px;
   line-height:140px;
+}
+
+@media only screen and (max-width:550px)
+{
+  .social-media-icons
+  {
+    margin-top:-32px;
+  }
+  
+  .social-media-icons .socicon
+  {
+    font-size:32px;
+    line-height:48px;
+  }
+  
+  .social-media-icons > li
+  {
+    width:66px;
+    margin:1em;
+  }
 }
 
 /* attach hover state to the share container */

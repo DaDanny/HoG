@@ -36,9 +36,13 @@
   border-radius:50px;
   margin:0 20px;
   cursor:pointer;
-  
-  transform:scale(0.8);
+  -webkit-transform: scale(0.8);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: scale(0.8);  /* IE 9 */
+            transform: scale(0.8);  /* Firefox 16+, IE 10+, Opera */
   transition:all ease-in 0.3s;
+  
+  /* this fixes the overflow:hidden in Chrome */
+  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
 }
 
 .timeline li img
@@ -60,7 +64,9 @@
 .timeline li:hover
 {
   border:3px solid white;
-  transform:scale(1);
+  -webkit-transform: scale(1);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: scale(1);  /* IE 9 */
+            transform: scale(1);  /* Firefox 16+, IE 10+, Opera */
 }
 
 .timeline li.active-is-true img
